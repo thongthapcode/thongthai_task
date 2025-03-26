@@ -7,7 +7,6 @@
             <script src="https://cdn.tailwindcss.com"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         </head>
-
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 let currentIndex = 0; 
@@ -156,12 +155,34 @@
     function addToCart(id, name, price) {
       alert(`Đã thêm sản phẩm ${name} giá ${price} vào giỏ hàng!`);
     }
+    document.addEventListener("DOMContentLoaded", function () {
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        let tabId = this.getAttribute("data-tab");
+
+        // Ẩn tất cả nội dung tab
+        tabContents.forEach((content) => {
+          content.classList.add("hidden");
+        });
+
+        // Hiển thị nội dung tab được chọn
+        document.getElementById(tabId).classList.remove("hidden");
+
+        // Xóa active của tất cả nút
+        tabButtons.forEach((btn) => btn.classList.remove("border-blue-500"));
+
+        // Thêm border cho tab đang chọn
+        this.classList.add("border-blue-500");
+      });
+    });
+
+    // Mặc định hiển thị tab đầu tiên
+    tabButtons[0].click();
+  });
         </script>
-
-
- 
-
-
           <body class="bg-gray-200 pt-14  ">
                 <!-- HEADER -->
                 <header class="bg-yellow-400 p-2 fixed top-0 left-0 w-full z-50">
@@ -180,7 +201,7 @@
                       <!-- Navigation (PC) -->
                       <nav class="flex items-center gap-6 flex-shrink-0 hidden ml-[-40px] sm:flex">
                           <button id="login-btn" class="text-sm flex items-center gap-2 cursor-pointer">
-                              <i class="fas fa-user text-lg"></i> Đăng nhập
+                            <img src="/images/login.png" alt="Đăng nhập" class="w-5 h-5"></i> Đăng nhập
                           </button>
                           <button class="relative flex items-center gap-2 cursor-pointer">
                               <i class="fas fa-shopping-cart text-lg"></i> Giỏ hàng
@@ -211,9 +232,7 @@
                           </button>
                       </div>
                     
-                  </div>
-              
-                 
+                  </div>                
                  <!-- Thanh tìm kiếm + Menu (Mobile) -->
 <div class="relative w-[380px] mt-2 px-2 sm:hidden ">
   <input type="text" class="w-full h-10 pl-14 pr-12 rounded-lg outline-none text-base bg-gray-100" placeholder="Bạn tìm gì...">
@@ -230,17 +249,7 @@
       <span id="cart-badge" class="bg-red-500 text-white rounded-full px-1 text-xs hidden">0</span>
   </button>
 </div>
-
               </header>
-              
-              
-              
-              
-              
-              
-              
-              
-
           <!-- Modal ĐĂNG NHẬP BẰNG SĐT -->
           <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
               <div class="bg-white p-6 rounded-lg w-full max-w-sm">
@@ -260,10 +269,10 @@
           <!--menu-->    
           <nav class="hidden sm:flex items-center justify-center bg-yellow-400 py-2 text-sm font-awesome shadow-none  gap-4  ">
 
-              <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-mobile-alt"></i>
-                  <span>Điện thoại</span>
-                </div>   
+            <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
+              <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="Điện thoại" class="w-5 h-5">
+              <span>Điện thoại</span> 
+            </div>  
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
                   <i class="fas fa-laptop"></i>
                   <span>Laptop</span>
@@ -320,82 +329,52 @@
         
     
         -->
-        
         <main>
-
-        
+      
   <!-- SẢN PHẨM NỔI BẬT -->
-  
-      <h2 class="text-2xl  text-gray-800 ml-40  font-bold  mt-10 mb-6">Khuyến mãi Online</h2>
-  
-          <section class="max-w-[1200px] mx-auto mt-1 bg-white rounded-2xl">
+  <h2 class="text-2xl text-gray-800 font-bold text-left ml-0 lg:ml-40 mt-20 lg:mt-6 mb-6">
+    Khuyến mãi Online
+  </h2>
+          <section class="max-w-[1200px] mx-auto mt-1 bg-white rounded-lg">
               
-                <div class="max-w-screen-xl mx-auto bg-white p-3 rounded shadow-lg">
+                <div class="max-w-full mx-auto bg-white p-3 rounded-2xl shadow-lg">
                   <!-- Thanh nút TAB -->
-                  <div class="flex gap-2 border-b border-gray-300 mb-4 justify-center gap-[50px] overflow-x-auto">
+                  <div class="flex  border-b border-gray-300 mb-4 justify-start gap-[50px] overflow-x-auto max-w-full flex-nowrap whitespace-nowrap">
+
 
                     <!-- 3 tab đầu (banner) -->
-                    <button 
-                    class="tab-button focus:outline-none"
-                    data-tab="tab4"
-                  >
-                  <img src="/images/flsale4.png" alt="Tab 4" class=" w-full h-full object-contain" />
-
-                  </button>
-                  
-                  <button 
-                  class="tab-button  border-transparent  focus:outline-none"
-                  data-tab="tab4"
-                >
-                  <img src="/images/flsale2.png" alt="Tab 4" class="w-full h-full object-contain" />
-                </button>
-                
-                <button 
-                class="tab-button  border-transparent  focus:outline-none"
-                data-tab="tab4"
-            >
-                <img src="/images/flsale3.png" alt="Tab 4" class="w-full h-full object-contain" />
-              </button>
+                   <!-- 3 Tab Banner -->
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none active-tab" data-tab="tab4">
+      <img src="./images/flsale4.png" alt="Banner 1" class="h-12 sm:h-10 w-auto min-w-[80px]">
+    </button>
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab2">
+      <img src="/images/flsale2.png" alt="Banner 2" class="h-12 sm:h-10 w-auto min-w-[80px]">
+    </button>
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab3">
+      <img src="/images/flsale3.png" alt="Banner 3" class="h-12 sm:h-10 w-auto min-w-[80px]">
+    </button>
               
               
                     <!-- 5 tab sau (grid sản phẩm) -->
-                    <button 
-                      class="tab-button py-0 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none whitespace-nowrap "
-                      data-tab="tab4"
-                    >
-                    Điện thoại
-                    </button>
-                    <button 
-                      class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none"
-                      data-tab="tab5"
-                    >
-                      Apple
-                    </button>
-                    <button 
-                      class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none"
-                      data-tab="tab6"
-                    >
-                      Laptop
-                    </button>
-                    <button 
-                      class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none whitespace-nowrap"
-                      data-tab="tab7"
-                    >
-                    Phụ kiện
-                    </button>
-                    <button 
-                      class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none whitespace-nowrap"
-                      data-tab="tab8"
-                    >
-                      Đồng hồ
-                    </button>
+                     <!-- 5 Tab Sản Phẩm -->
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab4">Điện thoại</button>
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab5">Apple</button>
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab6">Laptop</button>
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab7">Phụ kiện</button>
+    <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab8">Đồng hồ</button>
                   </div>
 
                 <!-- Thanh đồng hồ đếm ngược -->
-<div id="countdownContainer" class="flex items-center justify-center mb-4">
-    <div class="bg-orange-500 text-white px-[90px] py-1 rounded-full inline-flex items-center">
+<div id="countdownContainer" class="flex items-center justify-center mb-4 mt-4">
+    <div class="bg-orange-500 text-white px-[90px] py-1 rounded-full inline-flex items-center ">
       <span class="mr-2 font-semibold">Chỉ còn:</span>
-      <span id="countdownTimer" class="font-bold text-xl">05 : 10 : 35</span>
+      <span id="countdownTimer" class="font-bold text-sm text-orange-500  rounded-md">
+        <span class=" bg-white px-2 py-1 rounded-md shadow">05</span>
+        <span class="   text-white ">:</span>
+        <span class=" bg-white px-2 py-1 rounded-md shadow">10</span>
+        <span  class="   text-white ">:</span>
+        <span class=" bg-white px-2 py-1 rounded-md shadow">35</span>
+      </span>
     </div>
   </div>
             
@@ -413,7 +392,18 @@
                   <!-- Thay đường dẫn banner3.jpg -->
                   <img src="/images/banner3.jpg" alt="Banner 3" class="w-full h-auto rounded" />
                 </div>
-            
+                <div id="tab1" class="tab-content">
+                  <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+                    <div class="bg-white border border-gray-200 p-2 text-left">
+                      <h6 class="text-xs font-semibold">iPhone 14 Pro Max 512GB</h6>
+                      <p class="text-red-600 text-lg font-bold">30.000.000₫</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 p-2 text-left"> 
+                      <h6 class="text-xs font-semibold">Samsung Galaxy S24 Ultra</h6>
+                      <p class="text-red-600 text-lg font-bold">26.990.000₫</p>
+                    </div>
+                  </div>
+                </div>
                 <!-- 5 tab sau (mỗi tab 1 grid sản phẩm) -->
                 <div id="tab4" class="tab-content hidden">
                   <!-- Gọi hàm hiển thị grid sản phẩm (copy code grid) -->
@@ -427,17 +417,24 @@
                         <span class="line-through text-sm mb-2">30.000.000₫</span>
                         <span class="text-red-500 font-semibold ml-2">-13%</span>
                       </p>
-                      
-                   
-                      <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                        <i class="fas fa-fire text-orange-500 mr-1"></i>
-                        <span>Còn 4/10 suất</span>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
+                        </p>
                       </div>
-                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
                         Mua ngay
                       </button>
                     </div>
-                    <!-- Thêm các sản phẩm khác (copy y hệt, hoặc thay đổi nếu muốn) -->
                     <!-- Sản phẩm 2 -->
                     <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
                       <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
@@ -447,17 +444,26 @@
                         <span class="line-through text-sm mb-2">30.000.000₫</span>
                         <span class="text-red-500 font-semibold ml-2">-13%</span>
                       </p>
-                      
-                   
-                      <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                        <i class="fas fa-fire text-orange-500 mr-1"></i>
-                        <span>Còn 4/10 suất</span>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
+                        </p>
                       </div>
-                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
                         Mua ngay
                       </button>
                     </div>
-                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                     <!-- Sản phẩm 3 -->
+                     <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
                       <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
                       <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
                       <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
@@ -465,193 +471,271 @@
                         <span class="line-through text-sm mb-2">30.000.000₫</span>
                         <span class="text-red-500 font-semibold ml-2">-13%</span>
                       </p>
-                      
-                   
-                      <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                        <i class="fas fa-fire text-orange-500 mr-1"></i>
-                        <span>Còn 4/10 suất</span>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
+                        </p>
                       </div>
-                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
                         Mua ngay
                       </button>
                     </div>
-                    <!-- Thêm các sản phẩm khác (copy y hệt, hoặc thay đổi nếu muốn) -->
-                    <!-- Sản phẩm 2 -->
-                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                      <p class="text-gray-500 text-xs  mb-2">
-                        <span class="line-through text-sm mb-2">30.000.000₫</span>
-                        <span class="text-red-500 font-semibold ml-2">-13%</span>
-                      </p>
-                      
-                   
-                      <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                        <i class="fas fa-fire text-orange-500 mr-1"></i>
-                        <span>Còn 4/10 suất</span>
-                      </div>
-                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                        Mua ngay
-                      </button>
-                    </div>
-                      <!-- Thêm các sản phẩm khác (copy y hệt, hoặc thay đổi nếu muốn) -->
-                      <!-- Sản phẩm 2 -->
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
-                        </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
-                      </div>
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
-                        </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
-                      </div>
-                      <!-- Thêm các sản phẩm khác (copy y hệt, hoặc thay đổi nếu muốn) -->
-                      <!-- Sản phẩm 2 -->
                  
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
+                    <!-- Sản phẩm 4 -->
+                  
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
                         </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
                       </div>
-                      <!-- Thêm các sản phẩm khác (copy y hệt, hoặc thay đổi nếu muốn) -->
-                      <!-- Sản phẩm 2 -->
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                      <!-- Sản phẩm 5 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
                         </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
                       </div>
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                      <!-- Sản phẩm  6-->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
                         </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
                       </div>
-                      <!-- Thêm các sản phẩm khác (copy y hệt, hoặc thay đổi nếu muốn) -->
-                      <!-- Sản phẩm 2 -->
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                       <!-- Sản phẩm 7 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
                         </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
                       </div>
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                       <!-- Sản phẩm 8 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
                         </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
                       </div>
-                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                        <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                        <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                        <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
-                        <p class="text-gray-500 text-xs  mb-2">
-                          <span class="line-through text-sm mb-2">30.000.000₫</span>
-                          <span class="text-red-500 font-semibold ml-2">-13%</span>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                      <!-- Sản phẩm 9 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
                         </p>
-                        
-                     
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-400 to-gray-200 rounded-full px-2 py-0.5 text-xs font-semibold mb-3 w-full">
-                          <i class="fas fa-fire text-orange-500 mr-1"></i>
-                          <span>Còn 4/10 suất</span>
-                        </div>
-                        <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 rounded">
-                          Mua ngay
-                        </button>
                       </div>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                      <!-- Sản phẩm 10 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
+                        </p>
+                      </div>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                      <!-- Sản phẩm 11 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
+                        </p>
+                      </div>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
+                      <!-- Sản phẩm 12 -->
+                    <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
+                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <p class="text-gray-500 text-xs  mb-2">
+                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                      </p>
+                   <!-- Thanh tiến trình-->
+                      <div class="relative w-full bg-gray-200 rounded-full h-4">
+                        <!-- Icon bên trong thanh -->
+                        <img src="https://cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/homev2/flash-sale.png" 
+                             alt="Flash Sale" 
+                             class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
+                        <!-- Phần đã bán -->
+                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <!-- Văn bản ở giữa thanh -->
+                        <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
+                          Còn 4/10 suất
+                        </p>
+                      </div>
+                        <!-- nút mua hàng-->
+                      <button onclick="addToCart(1, 'iPhone 14 Pro Max', 30000000)" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 text-xs font-semibold py-1 mt-3">
+                        Mua ngay
+                      </button>
+                    </div>
                       
-                      
-
-                    <!-- ... Tương tự cho các sản phẩm khác ... -->
+            
                   </div>
                 </div>
             
@@ -705,14 +789,17 @@
               </div>
 
         
-        <!-- slide chuyển động -->
-        <div class="relative w-6/6 mx-auto mt-5 overflow-hidden rounded-lg">
+    
+
+      </section>
+          <!-- slide chuyển động -->
+          <div class="relative max-w-[1200px] mx-auto mt-5 overflow-hidden rounded-lg">
             <!-- Khung chứa slide -->
             <div id="sliderContainer" class="flex w-full transition-transform duration-700 ease-in-out">
                 <img src="/images/slider.png" class="w-full flex-shrink-0" alt="Slide 1">
                 <img src="/images/slider2.png" class="w-full flex-shrink-0" alt="Slide 2">
                 <img src="/images/slider3.png" class="w-full flex-shrink-0" alt="Slide 3">
-            </div>
+            </div>s
 
             <!-- Nút điều hướng -->
             <button id="prevBtn" class="absolute top-1/2 left-3 transform -translate-y-1/2  text-white p-3 rounded-full hover:bg-gray-700">
@@ -722,11 +809,9 @@
                 ❯
             </button>
         </div>
-
-      </section>
     <!--kết thúc sản phẩm 1-->
-        <section class="max-w-6xl mx-auto mt-5 bg-white p-5 rounded-lg">
-            <h2 class="text-xl font-awesome mb-4">Sản Phẩm Đặc Quyền <i class=""></i></h2>
+        <section class="max-w-[1200px] mx-auto mt-5 bg-white p-5 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Sản Phẩm Đặc Quyền <i class=""></i></h2>
             
             <div class="grid grid-cols-2 md:grid-cols-6 gap-5">
                 <!-- Banner quảng cáo to hơn (chiếm 2 cột) -->
