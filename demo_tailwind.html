@@ -4,8 +4,20 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Thế Giới Di Động</title>
-            <script src="https://cdn.tailwindcss.com"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+          
+           <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <link rel="stylesheet" href="style.css"> 
+   <style>
+    .bg-oklch {
+    background-color: oklch(0.769 0.188 70.08);
+  } 
+   </style>
+   
+
         </head>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -193,7 +205,7 @@
                       </div>
                       
                       <!-- Thanh tìm kiếm (PC) -->
-                      <div class="relative flex-grow max-w-[415px] ml-[-80px] hidden sm:block">
+                      <div class="relative flex-grow max-w-[415px] ml-[-75px] hidden sm:block">
                           <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg"></i>
                           <input type="text" class="w-full h-10 pl-12 pr-4 rounded-full outline-none text-base" placeholder="Bạn tìm gì...">
                       </div>
@@ -201,35 +213,47 @@
                       <!-- Navigation (PC) -->
                       <nav class="flex items-center gap-6 flex-shrink-0 hidden ml-[-40px] sm:flex">
                           <button id="login-btn" class="text-sm flex items-center gap-2 cursor-pointer">
-                            <img src="/images/login.png" alt="Đăng nhập" class="w-5 h-5"></i> Đăng nhập
+                            <i class="fa-regular fa-user"></i> Đăng Nhập
                           </button>
                           <button class="relative flex items-center gap-2 cursor-pointer">
                               <i class="fas fa-shopping-cart text-lg"></i> Giỏ hàng
                               <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-2 text-sm hidden">0</span>
                           </button>
-                          <div class="bg-yellow-300 px-20 py-2 rounded-full flex items-center gap-2 text-sm cursor-pointer">
-                              <i class="fas fa-map-marker-alt text-lg"></i> Hồ Chí Minh <i class="fas fa-angle-down"></i>
+                          <div class="bg-yellow-300 px-[140px] py-2 rounded-full flex items-center h-10 text-sm cursor-pointer relative">
+                            <!-- Icon bên trái -->
+                            <i class="absolute left-[3px] fas fa-map-marker-alt text-lg"></i>
+                            <!-- Chữ "Hồ Chí Minh" với vị trí tuyệt đối -->
+                            <span class="absolute left-[20px]">Hồ Chí Minh</span>
+                            <!-- Icon bên phải -->
+                            <i class="absolute right-[20px] fas fa-angle-down text-lg"></i>
                           </div>
+                          
+                          
+                        
+                        
                       </nav>
               
                       <!-- Logo + HCM + Đăng nhập (Mobile) -->
-                        <div class="flex items-center sm:hidden w-full px-1">
+                        <div class="flex items-center sm:hidden w-full gap-2 px-2  ">
                           <!-- Logo Mobile -->
-                          <div class="logo-mobi ml-0 flex-shrink-0">
+                          <div class="logo-mobi ml-0 flex-shrink-0 flex top-1 left-1 ">
                               <a href="#"><img src="/images/logo2.png" alt="Thegioididong" class="h-8 max-w-[120px] object-contain"></a>
                           </div>
                       
                           <!-- HCM (Căn trái) -->
-      <div class="bg-yellow-300 px-20 py-1 rounded-full flex items-center text-xs cursor-pointer ml-0  text-left">
-        <i class="fas fa-map-marker-alt text-sm"></i> 
-        <span class="text-xs">Hồ Chí Minh</span> 
-        <i class="fas fa-angle-down text-sm"></i>
-    </div>
+                          <div class="bg-yellow-300 px-6 py-1 w-[270px] h-8 rounded-full flex items-center justify-start gap-1 text-xs cursor-pointer">
+                            <i class="fas fa-map-marker-alt text-sm"></i>
+                            <span class="text-xs pl-0">Hồ Chí Minh</span> 
+                            <i class="fas fa-angle-down text-sm ml-auto"></i>
+                        </div>
+                        
                       
-                          <!-- Đăng nhập sang phải -->
-                          <button id="login-btn" class="text-xs flex items-center gap-1 cursor-pointer ml-2">
-                              <i class="fas fa-user text-xs"></i> Đăng nhập
-                          </button>
+                          <!-- Đăng nhập sang phải -->           
+                    <button id="login-btn" class="flex items-center space-x-2 text-xs cursor-pointer whitespace-nowrap bg-yellow-300 px-1 py-1 rounded-full h-8">
+                      <i class="fas fa-user text-xs"></i> 
+                      <span>Đăng nhập</span>
+                    </button>
+
                       </div>
                     
                   </div>                
@@ -238,15 +262,15 @@
   <input type="text" class="w-full h-10 pl-14 pr-12 rounded-lg outline-none text-base bg-gray-100" placeholder="Bạn tìm gì...">
   
   <!-- Nút Menu 3 gạch nằm trong thanh tìm kiếm -->
-  <button id="menu-btn" class="absolute left-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center text-gray-600 px-2 py-1 rounded-md">
+  <button id="menu-btn" class="absolute left-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center text-gray-600 px-2 py-1 rounded-md bg-gray-200">
       <i class="fas fa-bars text-sm"></i>
       <span class="text-xs mt-[-2px]">Menu</span>
   </button>
 
   <!-- Nút giỏ hàng nằm trong thanh tìm kiếm -->
-  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-4 text-gray-600">
+  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-4 text-gray-600 bg-gray-200 ">
       <i class="fas fa-shopping-cart text-lg"></i>
-      <span id="cart-badge" class="bg-red-500 text-white rounded-full px-1 text-xs hidden">0</span>
+      <span id="cart-badge" class="bg-red-500 text-white rounded-full px-1 text-xs hidden"></span>
   </button>
 </div>
               </header>
@@ -267,51 +291,109 @@
 
           </div>
           <!--menu-->    
-          <nav class="hidden sm:flex items-center justify-center bg-yellow-400 py-2 text-sm font-awesome shadow-none  gap-4  ">
+          <nav class="hidden sm:flex items-center justify-center bg-yellow-400 py-2 text-sm font-awesome shadow-none gap-2  ">
 
             <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
               <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="Điện thoại" class="w-5 h-5">
               <span>Điện thoại</span> 
             </div>  
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-laptop"></i>
+                  <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="Laptop" class="w-5 h-5">
                   <span>Laptop</span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-headphones"></i>
+                  <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="phụ kiện" class="w-5 h-5">
                   <span>Phụ kiện </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-clocks"></i>
+                  <img src="https://cdn.tgdd.vn/content/smartwatch-24x24.png" alt="SmartWatch" class="w-5 h-5">
                   <span>SmartWatch </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-clock"></i>
+                  <img src="https://cdn.tgdd.vn/content/watch-24x24.png" alt="Đồng hồ" class="w-5 h-5">
                   <span>đồng hồ </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-tablet-alt"></i>
+                  <img src="https://cdn.tgdd.vn/content/tablet-24x24.png" alt="Tablet" class="w-5 h-5">
                   <span>Tablet </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-recycle"></i>
+                  <img src="https://cdn.tgdd.vn/content/may-cu-24x24.png" alt="Máy cũ" class="w-5 h-5">
                   <span>Máy cũ, thu cũ </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-print"></i>
+                  <img src="https://cdn.tgdd.vn/content/PC-24x24.png" alt="Màn hình" class="w-5 h-5">
                   <span>Màn hình, máy in </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-sim-card"></i>
+                  <img src="https://cdn.tgdd.vn/content/sim-24x24.png" alt="Sim" class="w-5 h-5">
                   <span>Sim, Thẻ cào </span>
                 </div>
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <i class="fas fa-file-invoice"></i>
+                  <img src="https://cdn.tgdd.vn/content/tien-ich-24x24.png" alt="Điện thoại" class="w-5 h-5">
                   <span>Dịch vụ tiện ích </span>
                 </div>
               
           </nav>
           
+<!-- Chỉ hiển thị khi màn hình nhỏ hơn lg (dưới 1024px) -->
+<div class="overflow-x-auto whitespace-nowrap flex gap-2 p-6 bg-white shadow-md lg:hidden  top-[80px] left-0 w-full mt-9">
+  <!-- Item 1 -->
+  <div class="flex flex-col items-center min-w-[90px] cursor-pointer mt-3 ml-0">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/c3/b0/c3b0a1bc0c5a2a63daba8715d58234f4.png" alt="Điện thoại" class="w-8 h-8 rounded-lg object-cover">
+    <span class="text-xs mt-1">Điện thoại</span>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="flex flex-col items-center min-w-[70px] cursor-pointer  mt-3 ml-0">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/41/0e/410e3921219565561239396e3ac40321.png" alt="Laptop" class="w-8 h-8 rounded-lg object-cover">
+    <span class="text-xs mt-1">Laptop</span>
+  </div>
+
+  <!-- Item 3 -->
+  <div class="flex flex-col items-center min-w-[70px] cursor-pointer  mt-3 ml-0">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/28/4c/284cce313b1c0e222070bcadf38bdedb.png" alt="Tablet" class="w-8 h-8 rounded-lg object-cover">
+    <span class="text-xs mt-1">Phụ kiện</span>
+  </div>
+
+  <!-- Item 4 -->
+  <div class="flex flex-col items-center min-w-[70px] cursor-pointer  mt-3 ml-0">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/87/16/871680b3f22336ede6111a9bc6151c6b.png" alt="SmartWatch" class="w-8 h-8 rounded-lg object-cover">
+    <span class="text-xs mt-1">SmartWatch</span>
+  </div>
+   <!-- Item 5 -->
+   <div class="flex flex-col items-center min-w-[70px] cursor-pointer mt-3 ml-0">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/ee/30/ee306aff6625654295b282ca6b5c2253.png" alt="Đồng hồ" class="w-8 h-8 rounded-lg object-cover">
+    <span class="text-xs mt-1">Đồng hồ</span>
+  </div>
+   <!-- Item 6 -->
+   <div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/2e/2f/2e2fb71ceae4c1fa8ac5d0d522941e12.png" alt="tablet" class="w-12 h-12 rounded-lg object-cover">
+    <span class="text-xs mt-1">Tablet</span>
+  </div>
+   <!-- Item 7 -->
+   <div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/54/96/54965e9976059f689c8905bfa5696b61.png" alt="sim the cao" class="w-12 h-12 rounded-lg object-cover">
+    <span class="text-xs mt-1">Sim, thẻ cào</span>
+  </div>
+   <!-- Item 8 -->
+   <div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/24/b3/24b303278d3d03de8b3fa3a31c2a1820.png" alt="Máy in" class="w-12 h-12 rounded-lg object-cover">
+    <span class="text-xs mt-1">Máy in</span>
+  </div>
+   <!-- Item 9 -->
+   <div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/0d/65/0d65ff1e6ee2d80bf67fd044aa9bfa09.png" alt="Máy cũ" class="w-12 h-12 rounded-lg object-cover">
+    <span class="text-xs mt-1">Phụ kiện</span>
+  </div>
+   <!-- Item 10 -->
+   <div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+    <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/be/96/be96df770b763f92165ee92b6fdcf557.png" alt="Dich vụ tiện ích" class="w-12 h-12 rounded-lg object-cover">
+    <span class="text-xs mt-1">Dịch vụ tiện ích</span>
+  </div>
+</div>
+
+
     <!-- QUẢNG CÁO CHÍNH -->
         <!--
     
@@ -332,26 +414,27 @@
         <main>
       
   <!-- SẢN PHẨM NỔI BẬT -->
-  <h2 class="text-2xl text-gray-800 font-bold text-left ml-0 lg:ml-40 mt-20 lg:mt-6 mb-6">
+  <h2 class="text-lg sm:text-xl lg:text-2xl text-gray-800 font-bold text-left ml-4 lg:ml-40 mt-4 lg:mt-10 mb-4">
     Khuyến mãi Online
-  </h2>
+</h2>
+
           <section class="max-w-[1200px] mx-auto mt-1 bg-white rounded-lg">
               
                 <div class="max-w-full mx-auto bg-white p-3 rounded-2xl shadow-lg">
                   <!-- Thanh nút TAB -->
-                  <div class="flex  border-b border-gray-300 mb-4 justify-start gap-[50px] overflow-x-auto max-w-full flex-nowrap whitespace-nowrap">
+                  <div class="flex  border-b border-gray-300 mb-4 mt-0 gap-12 overflow-x-auto max-w-full flex-nowrap whitespace-nowrap">
 
 
                     <!-- 3 tab đầu (banner) -->
                    <!-- 3 Tab Banner -->
     <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none active-tab" data-tab="tab4">
-      <img src="./images/flsale4.png" alt="Banner 1" class="h-12 sm:h-10 w-auto min-w-[80px]">
+      <img src="https://cdnv2.tgdd.vn/mwg-static/common/Campaign/10/0d/100d3018ffd23afe20324b164d0412cc.png" alt="Banner 1" class="h-8 sm:h-12 w-auto min-w-[80px]">
     </button>
     <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab2">
-      <img src="/images/flsale2.png" alt="Banner 2" class="h-12 sm:h-10 w-auto min-w-[80px]">
+      <img src="https://cdnv2.tgdd.vn/mwg-static/common/Campaign/a3/bb/a3bbf2f08eed862b8f6a9db2b228468f.png" alt="Banner 2" class="h-8 sm:h-12 w-auto min-w-[80px]">
     </button>
     <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab3">
-      <img src="/images/flsale3.png" alt="Banner 3" class="h-12 sm:h-10 w-auto min-w-[80px]">
+      <img src="https://cdnv2.tgdd.vn/mwg-static/common/Campaign/30/6c/306cd59f1055e122e1186dfc60623763.png" alt="Banner 3" class="h-8 sm:h-12 w-auto min-w-[80px]">
     </button>
               
               
@@ -363,21 +446,20 @@
     <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab7">Phụ kiện</button>
     <button class="tab-button py-2 px-4 border-b-2 border-transparent hover:text-blue-500 focus:outline-none" data-tab="tab8">Đồng hồ</button>
                   </div>
-
-                <!-- Thanh đồng hồ đếm ngược -->
-<div id="countdownContainer" class="flex items-center justify-center mb-4 mt-4">
-    <div class="bg-orange-500 text-white px-[90px] py-1 rounded-full inline-flex items-center ">
-      <span class="mr-2 font-semibold">Chỉ còn:</span>
-      <span id="countdownTimer" class="font-bold text-sm text-orange-500  rounded-md">
-        <span class=" bg-white px-2 py-1 rounded-md shadow">05</span>
-        <span class="   text-white ">:</span>
-        <span class=" bg-white px-2 py-1 rounded-md shadow">10</span>
-        <span  class="   text-white ">:</span>
-        <span class=" bg-white px-2 py-1 rounded-md shadow">35</span>
-      </span>
-    </div>
-  </div>
-            
+                  <!-- dong ho dem nguoc-->
+                  <div id="countdownContainer" class="flex items-center justify-center mb-4 mt-4">
+                    <div class="bg-oklch text-white px-8 sm:px-12 lg:px-[83px] py-1 rounded-full h-8 sm:h-9 lg:h-10 inline-flex items-center text-xs sm:text-sm lg:text-base">
+                      <span class="mr-2 font-semibold whitespace-nowrap">Chỉ còn:</span>
+                      <span id="countdownTimer" class="font-bold text-xs sm:text-sm lg:text-base text-orange-500 rounded-md">
+                        <span class="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md shadow">05</span>
+                        <span class="text-white">:</span>
+                        <span class="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md shadow">10</span>
+                        <span class="text-white">:</span>
+                        <span class="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md shadow">35</span>
+                      </span>
+                    </div>
+                  </div>
+                  
                 <!-- NỘI DUNG 8 TAB -->
                 <!-- 3 tab đầu hiển thị banner -->
                 <div id="tab1" class="tab-content">
@@ -407,7 +489,7 @@
                 <!-- 5 tab sau (mỗi tab 1 grid sản phẩm) -->
                 <div id="tab4" class="tab-content hidden">
                   <!-- Gọi hàm hiển thị grid sản phẩm (copy code grid) -->
-                  <div class="grid grid-cols-2 md:grid-cols-6 gap-6 text-left">
+                  <div class="grid grid-cols-2 md:grid-cols-6 gap-6 text-left  ml-3">
                     <!-- 1 Sản phẩm -->
                     <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
                       <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
@@ -424,7 +506,7 @@
                              alt="Flash Sale" 
                              class="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 z-10">
                         <!-- Phần đã bán -->
-                        <div class="absolute top-0 left-0 h-4 bg-orange-400 rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 40%;"></div>
+                        <div class="absolute top-0 left-0 h-4 bg-gradient-to-r from-yellow-100 to-orange-400 to rounded-full flex items-center pl-6 text-xs font-semibold text-white" style="width: 100%;"></div>
                         <!-- Văn bản ở giữa thanh -->
                         <p class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-black">
                           Còn 4/10 suất
@@ -437,12 +519,12 @@
                     </div>
                     <!-- Sản phẩm 2 -->
                     <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <img src="https://cdn.tgdd.vn/Products/Images/42/333770/honor-x5b-plus-blue-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">HONOR X5b Plus 4GB/128GB</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">5.000.005₫</p>
                       <p class="text-gray-500 text-xs  mb-2">
-                        <span class="line-through text-sm mb-2">30.000.000₫</span>
-                        <span class="text-red-500 font-semibold ml-2">-13%</span>
+                        <span class="line-through text-sm mb-2">3.000.000₫</span>
+                        <span class="text-red-500 font-semibold ml-2">-10%</span>
                       </p>
                    <!-- Thanh tiến trình-->
                       <div class="relative w-full bg-gray-200 rounded-full h-4">
@@ -464,11 +546,11 @@
                     </div>
                      <!-- Sản phẩm 3 -->
                      <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
-                      <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
+                      <img src="https://cdn.tgdd.vn/Products/Images/522/331232/ipad-mini-7-5g-grey-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPad mini 7 5G 128GB</h6>
+                      <p class="text-red-600 text-lg font-bold mb-2">10.000.000₫</p>
                       <p class="text-gray-500 text-xs  mb-2">
-                        <span class="line-through text-sm mb-2">30.000.000₫</span>
+                        <span class="line-through text-sm mb-2">40.000.000₫</span>
                         <span class="text-red-500 font-semibold ml-2">-13%</span>
                       </p>
                    <!-- Thanh tiến trình-->
@@ -493,8 +575,8 @@
                     <!-- Sản phẩm 4 -->
                   
                     <div class="bg-white border border-gray-200 p-2 text-left hover:shadow-lg cursor-pointer group flex flex-col items-start min-w-0 group">
-                      <img src="/images/iphone-14-pro-max-tim-thumb-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
-                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">iPhone 14 Pro Max 512gb</h6>
+                      <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/326059/hp-victus-16-s0078ax-r5-8c5n7pa-638763555186271869-600x600.jpg" alt="iPhone" class="w-full max-h-38 object-contain mb-2">
+                      <h6 class="text-xs font-semibold text-left mb-2 leading-tight truncate group-hover:text-blue-400">HP Gaming VICTUS 16 </h6>
                       <p class="text-red-600 text-lg font-bold mb-2">30.000.000₫</p>
                       <p class="text-gray-500 text-xs  mb-2">
                         <span class="line-through text-sm mb-2">30.000.000₫</span>
