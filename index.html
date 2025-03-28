@@ -296,21 +296,86 @@
       <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="Điện thoại" class="w-5 h-5">
       <span>Điện thoại</span>
     </div>
-    <!-- Sub Menu -->
-    <div class="absolute left-0 mt-2 hidden bg-white shadow-lg rounded w-40 group-hover:block">
-      <a href="#" class="block px-4 py-2 hover:bg-gray-200">iPhone</a>
-      <a href="#" class="block px-4 py-2 hover:bg-gray-200">Samsung</a>
-      <a href="#" class="block px-4 py-2 hover:bg-gray-200">Xiaomi</a>
-    </div>
   </div>  
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
                   <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="Laptop" class="w-5 h-5">
                   <span>Laptop</span>
                 </div>
-                <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
-                  <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" alt="phụ kiện" class="w-5 h-5">
-                  <span>Phụ kiện </span>
+                <!-- Phụ kiện (CÓ SUB MENU) -->
+                <div class="relative group">
+                  <div class="flex items-center gap-2 hover:bg-yellow-300 rounded cursor-pointer text-sm px-4 py-2">
+                    <img src="https://cdn.tgdd.vn/content/phonne-24x24.png" class="w-5 h-5">
+                    <span>Phụ kiện</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </div>
+                
+                  <!-- Submenu -->
+                  <div class="absolute hidden group-hover:flex flex-wrap bg-white shadow-lg p-4 w-[800px] left-0">
+                    <div class="grid grid-cols-2 gap-8 w-full">
+                      
+                      <!-- Cột 1 -->
+                      <div>
+                        <h3 class="text-md font-bold text-gray-700 mb-2">Phụ kiện di động</h3>
+                        <div class="grid grid-cols-5 gap-4">
+                          <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                            <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/99/61/9961578164909f8a9ee7678dc95feeb0.png" class="w-10 h-10">
+                            <span>Sạc dự phòng</span>
+                          </a>
+                          <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                            <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/6b/64/6b646ec5f1e9a726933ee31b86a32524.png" class="w-10 h-10">
+                            <span>Sạc, cáp</span>
+                          </a>
+                          <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                            <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/34/02/3402dd9ba3457b84482572d10bcae84e.png" class="w-10 h-10">
+                            <span>Ốp lưng</span>
+                          </a>
+                          <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                            <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/72/f4/72f4b3ee8f5c1b1a170d590b3a07256d.png" class="w-10 h-10">
+                            <span>Miếng dán</span>
+                          </a>
+                        </div>
+                      </div>
+                
+                      <!-- Cột 2 -->
+                      <div>
+                        <h3 class="text-md font-bold text-gray-700 mb-2">Thiết bị âm thanh</h3>
+                        <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                          <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/7c/09/7c09cbc92ef23816aa7d857ba8e0e194.png" class="w-8 h-8">
+                          <span>Tai nghe Bluetooth</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                          <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/76/6b/766be9586a3a82491ba8106b7e558605.png" class="w-8 h-8">
+                          <span>Loa</span>
+                        </a>
+                      </div>
+                
+                      <!-- Cột 3 -->
+                      <div>
+                        <h3 class="text-md font-bold text-gray-700 mb-2">Camera / Flycam</h3>
+                        <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                          <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/33/b9/33b9d8aeac5d4f67d759abaa5f60661e.png" class="w-8 h-8">
+                          <span>Camera trong nhà</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-2 py-2 hover:bg-gray-100">
+                          <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/9e/e9/9ee9ae20f38eff97221f040a735752ce.png" class="w-8 h-8">
+                          <span>Flycam</span>
+                        </a>
+                      </div>
+                
+                      <!-- Cột 4 -->
+                      <div>
+                        <h3 class="text-md font-bold text-gray-700 mb-2">Thương hiệu hàng đầu</h3>
+                        <div class="flex gap-4">
+                          <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/6a/6a/6a6a116227ceaf2f407f5573f44069ec.png" class="w-10 h-10">
+                          <img src="https://cdnv2.tgdd.vn/mwg-static/common/Common/ea/1d/ea1d0470faaea58604610926a4f45fcb.png" class="w-10 h-10">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                
                 <div class="flex items-center gap-2 hover:bg-yellow-200 rounded cursor-pointer text-sm px-2">
                   <img src="https://cdn.tgdd.vn/content/smartwatch-24x24.png" alt="SmartWatch" class="w-5 h-5">
                   <span>SmartWatch </span>
